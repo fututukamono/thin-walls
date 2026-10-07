@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thin Walls: Neighbor Noise - Overnight Noise Tracker for iPhone</title>
+<meta name="description" content="Log estimated overnight sound levels on your iPhone and see when it got loud and for how long. A personal log, not a certified sound level meter.">
+<!--
+  DRAFT (2026-10-07). Local draft only. Not published, not deployed.
+  Placeholders still open:
+   - App Store link: href="#" (no URL until the app is released)
+   - Price: the number is not fixed. The page says "the price is shown by the App Store before you buy". Add the number here only after it is fixed.
+  Wording rule: claim-type words are used only inside negated cautions (see the banned-word list in 20_LPの下書き).
+-->
+<style>
+:root {
+  --bg: #ffffff;
+  --fg: #1c1c1e;
+  --muted: #55555a;
+  --rule: #d9d9de;
+  --card: #f5f5f7;
+  --accent: #b83a0c;
+  --accent-fg: #ffffff;
+  --note-bg: #fff4ec;
+  --note-rule: #b83a0c;
+  --link: #9a3009;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #17171a;
+    --fg: #f2f2f7;
+    --muted: #b4b4bb;
+    --rule: #3a3a40;
+    --card: #232328;
+    --accent: #ff8a5c;
+    --accent-fg: #1a0c05;
+    --note-bg: #2b1c14;
+    --note-rule: #ff8a5c;
+    --link: #ffa682;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+.wrap { max-width: 46rem; margin: 0 auto; padding: 0 16px; }
+a { color: var(--link); }
+a:focus-visible, .btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+h1, h2, h3 { line-height: 1.25; margin: 0; }
+h2 { font-size: 1.5rem; margin-bottom: .75rem; }
+h3 { font-size: 1.1rem; margin-bottom: .35rem; }
+p { margin: .6rem 0; }
+section { padding: 2.25rem 0 0; }
+
+header.hero { padding: 2.5rem 0 0; }
+.eyebrow { color: var(--muted); font-size: .95rem; margin: 0 0 .5rem; }
+.hero h1 { font-size: 2.2rem; letter-spacing: -.01em; }
+.hero .sub { font-size: 1.2rem; color: var(--muted); margin: .25rem 0 1rem; }
+.lead { font-size: 1.1rem; }
+.btn {
+  display: inline-block; margin: .5rem 0 .25rem;
+  background: var(--accent); color: var(--accent-fg);
+  padding: .8rem 1.4rem; border-radius: 12px;
+  font-weight: 700; text-decoration: none;
+}
+.btn-note { font-size: .95rem; color: var(--muted); margin: .25rem 0 0; }
+
+/* Cautions are body size and full contrast on purpose: they sit beside the claim they limit. */
+.read-first, .caution, .box {
+  background: var(--note-bg);
+  border-left: 5px solid var(--note-rule);
+  border-radius: 0 10px 10px 0;
+  padding: .75rem 1rem;
+  margin: 1rem 0;
+  color: var(--fg);
+}
+.caution { margin: .6rem 0 0; font-size: 1rem; }
+.label { font-weight: 700; }
+
+.not-box { border: 2px solid var(--note-rule); border-radius: 12px; padding: 1.1rem 1rem 1.2rem; background: var(--note-bg); }
+.not-box h2 { margin-bottom: .5rem; }
+.not-box ul { margin: .75rem 0 0; padding-left: 1.2rem; }
+.not-box li { margin: .6rem 0; }
+
+.card { background: var(--card); border-radius: 14px; padding: 1rem 1rem 1.1rem; margin: 1rem 0; }
+.card p:first-of-type { margin-top: .2rem; }
+
+ol.steps { padding-left: 1.3rem; }
+ol.steps li { margin: .5rem 0; }
+
+.price-grid { display: grid; gap: .9rem; grid-template-columns: 1fr; margin: 1rem 0; }
+.price { border: 2px solid var(--rule); border-radius: 14px; padding: 1rem; }
+.price.main { border-color: var(--accent); }
+.price .what { font-weight: 700; font-size: 1.05rem; margin: 0 0 .3rem; }
+.price p { margin: .3rem 0; }
+
+dl.faq dt { font-weight: 700; margin-top: 1.1rem; }
+dl.faq dd { margin: .3rem 0 0; }
+
+.closing { margin-top: 2.25rem; }
+footer { margin-top: 2.5rem; border-top: 1px solid var(--rule); padding: 1.5rem 0 2.5rem; font-size: .95rem; color: var(--muted); }
+footer ul { list-style: none; padding: 0; margin: 0 0 1rem; }
+footer li { margin: .5rem 0; }
+footer p { margin: .5rem 0; }
+
+@media (min-width: 640px) {
+  .hero h1 { font-size: 2.8rem; }
+  .price-grid { grid-template-columns: 1fr 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">For iPhone. Coming soon to the App Store.</p>
+    <h1>Thin Walls: Neighbor Noise</h1>
+    <p class="sub">Overnight Noise Tracker</p>
+    <p class="lead">Footsteps at 2 AM? A dog barking all night? Start a log before bed. In the morning, see when it got loud and for how long, as estimates from your iPhone microphone.</p>
+    <a class="btn" href="#">App Store (link coming soon)</a>
+    <p class="btn-note">iPhone only. Not yet released.</p>
+
+    <div class="read-first" role="note">
+      <p><span class="label">Read this first.</span> Thin Walls is a personal noise log, not a certified sound level meter. Its levels are estimates and can be wrong. It is not legal advice, and no police department, city office, landlord, property manager, HOA or court has promised to accept anything it makes. See <a href="#not">What this app is not</a>, just below.</p>
+    </div>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <section id="not" aria-labelledby="not-h">
+    <div class="not-box">
+      <h2 id="not-h">What this app is not</h2>
+      <p>Please read this before you decide to use Thin Walls or rely on what it shows.</p>
+      <ul>
+        <li><strong>It is not a certified sound level meter.</strong> It estimates sound levels from the iPhone microphone. The microphone, its case, where you put the iPhone and other sounds in the room all change the result. A very loud sound can read lower than it was.</li>
+        <li><strong>Nobody has promised to accept what it makes.</strong> No city office, 311 service, police department, landlord, property manager, HOA or court has promised to accept a report from this app, and a report may not be accepted as evidence. Rules differ by place and by person, and some do not accept phone readings at all.</li>
+        <li><strong>It is not legal advice.</strong> We are not a law firm. The app does not decide whether a noise rule, a lease or a law was broken, and using it does not create a lawyer-client relationship.</li>
+        <li><strong>It is not connected to anyone.</strong> Thin Walls is not affiliated with, and not approved by, any city office, police department, landlord, HOA or Apple. It does not send complaints or reports for you.</li>
+        <li><strong>It does not know what made a sound.</strong> It does not know who made a sound or where it came from. Notes are typed by you.</li>
+        <li><strong>It does not promise results.</strong> There is no promise that it will record every night, run without interruption, or help in any dispute.</li>
+        <li><strong>It is not for emergencies.</strong> If you are in danger, call 911 (or your local emergency number). It is also not a hearing-protection or medical device.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section aria-labelledby="does-h">
+    <h2 id="does-h">What Thin Walls does</h2>
+    <p>Thin Walls keeps a night-by-night log of noise from a neighbor or a barking dog: when it got loud, for how long, and how often. Each item below comes with the limit that goes with it.</p>
+
+    <div class="card">
+      <h3>Logs the night, even with the screen locked</h3>
+      <p>Tap Start before bed. The app estimates the sound level every second and keeps going while the screen is locked.</p>
+      <p class="caution"><span class="label">Caution:</span> Logging can stop, for example after a phone call, when another app takes the microphone, or when the battery runs out. Time that was not recorded is shown as not recorded. It is never filled in. Keep the iPhone plugged in.</p>
+    </div>
+
+    <div class="card">
+      <h3>Lists your nights</h3>
+      <p>See each night: minutes over your threshold, minutes at night, how many events, the loudest moment, and any time the app was not logging. Open a night for a chart by minute.</p>
+      <p class="caution"><span class="label">Caution:</span> The threshold sets itself 10 dB above the quiet level in the first 10 minutes of the night. &quot;Events&quot; and &quot;time over the threshold&quot; are calculations the app makes from its own estimated numbers. They are not findings about any person, any source of a sound or any rule.</p>
+    </div>
+
+    <div class="card">
+      <h3>Lets you add notes</h3>
+      <p>Tap an event to note what you heard: footsteps, music or bass, voices, door or banging, dog barking, or other.</p>
+      <p class="caution"><span class="label">Caution:</span> Note types are labels that you choose. The app does not decide what made a sound. Write about the sound, not the person. Do not write names or unit numbers.</p>
+    </div>
+
+    <div class="card">
+      <h3>Optional calibration</h3>
+      <p>If you own a sound level meter, you can match the app&#x27;s level to your meter at one test level.</p>
+      <p class="caution"><span class="label">Caution:</span> This does not make the app a certified meter. Calibration does not correct the microphone&#x27;s frequency response, or the estimates at other levels or for other kinds of sound. We cannot check your meter or what you enter. Calibrated levels are still estimates.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="reports-h">
+    <h2 id="reports-h">Share a PDF, ZIP or chart image</h2>
+    <p>Make a PDF in one of three kinds, and share it with the iOS share sheet:</p>
+    <ul>
+      <li><strong>City / ordinance:</strong> dates, times and lengths of louder periods, with a page on how the levels were estimated.</li>
+      <li><strong>Landlord / HOA:</strong> dates, times and lengths of louder periods, as an attachment for a landlord or HOA.</li>
+      <li><strong>Night Summary:</strong> one page with when the iPhone was logging each night (up to six nights), how many times the level went over your threshold, and a chart by minute.</li>
+    </ul>
+    <p>You can also export a ZIP (the PDF, the per-second values as CSV, the times the app was not logging, and a README), a chart of one night as an image, and the data files of any night.</p>
+    <div class="caution">
+      <p><span class="label">Caution about reports:</span> A report is made by you, on your own iPhone. No police department, 311 service, city office, court, landlord, property manager or HOA made, checked or approved it, and none has promised to accept it. It may not be accepted as evidence. It does not say what made a sound, who made it, or whether any law, lease or rule was broken. Page 1 of every PDF carries a box with these limits.</p>
+    </div>
+    <div class="card">
+      <h3>File fingerprint</h3>
+      <p>After you create a PDF or ZIP, the app shows a SHA-256 file fingerprint. If a file you compare shows the same value, it is byte-for-byte the same as the file you exported.</p>
+      <p class="caution"><span class="label">Caution:</span> The fingerprint shows only that. It does not show who made the file, that the sounds happened as described, or that nothing was changed before export.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="price-h">
+    <h2 id="price-h">Free, and a one-time purchase</h2>
+    <div class="price-grid">
+      <div class="price">
+        <p class="what">Free, no limits</p>
+        <p>Overnight logging, nightly summaries and charts, notes, chart images, data export.</p>
+      </div>
+      <div class="price main">
+        <p class="what">Your first full PDF and ZIP: free</p>
+        <p>Try a full report once, at no cost.</p>
+      </div>
+      <div class="price">
+        <p class="what">More PDFs and ZIPs: one-time purchase</p>
+        <p>No subscription. The price is shown by the App Store, in your currency, before you buy. Restore Purchases is always in the app.</p>
+      </div>
+    </div>
+    <p class="caution"><span class="label">Caution:</span> &quot;One-time&quot; means you pay once for this unlock. It is not a promise that the app, or Apple&#x27;s services, will be available forever. We may update, change or stop the app. If a future version removes the unlocked feature, we will say so in the app before the change and tell you how to ask Apple for a refund. Purchases are paid through your Apple Account and handled by Apple under Apple&#x27;s rules.</p>
+  </section>
+
+  <section aria-labelledby="privacy-h">
+    <h2 id="privacy-h">Privacy</h2>
+    <p><strong>No audio is saved.</strong> The app saves sound levels, times and your notes in the app on your iPhone. There is no account. We never receive your levels, times, notes or reports.</p>
+    <div class="caution">
+      <p><span class="label">What this does and does not mean:</span> The microphone can pick up voices and other sounds in the room while the app is logging. The app keeps the sound in memory for under a second to calculate a level, turns it into level numbers, and then discards it. It does not recognize speech. Files you share go where you send them. Your records may be included in your own iPhone backups. If you chose to share analytics with app developers in your iPhone settings, Apple may give us aggregated crash data and usage statistics that do not personally identify you.</p>
+    </div>
+    <p>Read the <a href="privacy.html">Privacy Policy: what the app keeps and what we receive</a>.</p>
+  </section>
+
+  <section aria-labelledby="you-h">
+    <h2 id="you-h">You are responsible for how you use it</h2>
+    <ul>
+      <li><strong>Follow the laws where you live.</strong> Laws on recording and listening to other people&#x27;s conversations, and on other people&#x27;s privacy, differ by state and country, and some require everyone&#x27;s consent. We cannot tell you whether using the app is lawful where you are. You alone are responsible for following the laws that apply to you.</li>
+      <li><strong>Place the iPhone only where you are allowed to.</strong> Do not put it where you do not have the right to be or to leave a device, such as in someone else&#x27;s home or in a shared area without permission. Do not use the app to listen in on or watch another person.</li>
+      <li><strong>Write about sounds, not people.</strong> A false or unfair statement about a person can make you responsible for the harm.</li>
+      <li><strong>Do not use it to harass or pressure anyone.</strong> Share a report only with the people handling your matter, and do not post it online.</li>
+      <li><strong>Use it safely.</strong> Keep the iPhone plugged in with its normal charger, off pillows and blankets.</li>
+      <li><strong>Age.</strong> You must be 18 or older to accept the Terms of Use. The app is not directed to children under 13.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="limits-h">
+    <h2 id="limits-h">No warranty, and limits on our responsibility</h2>
+    <ul>
+      <li><strong>Provided &quot;as is.&quot;</strong> To the maximum extent the law allows, the app and everything it makes are provided &quot;as is&quot; and &quot;as available,&quot; without warranty of any kind.</li>
+      <li><strong>We are not responsible for outcomes.</strong> To the maximum extent the law allows, we are not liable for lost data, for the outcome of any complaint, dispute, lease, HOA proceeding or court case, or for any claim by a third party (including a neighbor) about what you log, write or share. Our total liability to you is limited to the greater of what you paid us for the app in the 12 months before the claim and US$50.</li>
+      <li><strong>Rights the law protects stay with you.</strong> Nothing here limits any right or remedy that the law does not allow to be waived or limited.</li>
+    </ul>
+    <p>The exact wording is in sections 7 and 8 of the <a href="terms.html">Terms of Use</a>, which you accept in the app before you start.</p>
+  </section>
+
+  <section aria-labelledby="faq-h">
+    <h2 id="faq-h">Questions people ask</h2>
+    <dl class="faq">
+      <dt>Will my landlord, HOA or city accept a report from this app?</dt>
+      <dd>We cannot promise that. None of them has promised to accept it, and rules differ by place and by person. If your situation is serious, consider asking a lawyer or a local tenants&#x27; organization. This page is not legal advice.</dd>
+      <dt>Can I rely on the numbers?</dt>
+      <dd>Treat them as rough estimates from a phone microphone. The app is not a certified sound level meter, and a very loud sound can read lower than it was.</dd>
+      <dt>Does the app record my neighbors?</dt>
+      <dd>The app does not save audio. The microphone can still pick up sounds in the room while it logs, and the app turns them into level numbers. Whether using it is lawful where you are depends on the laws that apply to you.</dd>
+      <dt>Do you get my data?</dt>
+      <dd>We never receive your levels, times, notes or reports. They stay in the app on your iPhone until you share them.</dd>
+    </dl>
+  </section>
+
+  <section class="closing" aria-label="Summary of limits">
+    <div class="read-first" role="note">
+      <p><span class="label">In short:</span> estimates from an iPhone microphone. Not a certified sound level meter. Not legal advice. No promise that anyone will accept a report. Your use is your responsibility. Read the <a href="terms.html">Terms of Use: what the app can&#x27;t do and what you&#x27;re responsible for</a>.</p>
+    </div>
+    <a class="btn" href="#">App Store (link coming soon)</a>
+  </section>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <ul>
+      <li><a href="terms.html">Terms of Use</a></li>
+      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li>Contact: <a href="mailto:contact@da-win.net">contact@da-win.net</a></li>
+    </ul>
+    <p>iPhone and App Store are trademarks of Apple Inc. Thin Walls is not affiliated with or approved by Apple.</p>
+    <p>&copy; 2026 Aiba</p>
+  </div>
+</footer>
+
+</body>
+</html>
