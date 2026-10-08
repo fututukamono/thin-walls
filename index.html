@@ -124,6 +124,10 @@ footer ul { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; }
 footer li { margin: 0; }
 footer { background: var(--card); border-top: 1px solid var(--rule); }
 .hero-art { display: block; width: 100%; max-width: 560px; height: auto; margin: 1rem 0 .4rem; border-radius: 16px; }
+.cmp { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 1rem; }
+.cmp th, .cmp td { border: 1px solid var(--rule); padding: .6rem .7rem; text-align: left; vertical-align: top; }
+.cmp thead th { background: var(--card); }
+.cmp td.yes { font-weight: 700; }
 .safe { background: var(--card); border-radius: 14px; padding: 1rem 1.1rem; }
 .safe ul { margin: .4rem 0 0; padding-left: 1.2rem; }
 .safe li { margin: .5rem 0; }
@@ -299,6 +303,17 @@ dl.faq dd p { margin: .4rem 0; }
 
   <section aria-labelledby="price-h">
     <h2 id="price-h">Free, and a one-time purchase</h2>
+    <table class="cmp">
+      <thead><tr><th>What you get</th><th>Free</th><th>One-time purchase ($9.99)</th></tr></thead>
+      <tbody>
+        <tr><td>Overnight logging</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+        <tr><td>On-screen nightly summaries and charts</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+        <tr><td>Notes on events</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+        <tr><td>Raw data (CSV) export</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+        <tr><td>Full report (PDF and ZIP)</td><td>Your first one, free</td><td class="yes">Unlimited</td></tr>
+      </tbody>
+    </table>
+    <p>That is the only difference: the free version includes everything except unlimited reports. You pay once. There is no subscription.</p>
     <div class="price-grid">
       <div class="price">
         <p class="what">Always free</p>
@@ -310,7 +325,7 @@ dl.faq dd p { margin: .4rem 0; }
       </div>
       <div class="price">
         <p class="what">One-time purchase</p>
-        <p>Unlimited PDFs and ZIPs. No subscription. The price is shown by the App Store, in your currency, before you buy. Restore Purchases is on the purchase screen and in Settings.</p>
+        <p>Unlimited PDFs and ZIPs for <strong>$9.99</strong>, once. No subscription. The App Store shows the final price in your currency before you buy. Restore Purchases is on the purchase screen and in Settings.</p>
       </div>
     </div>
     <p class="caution"><span class="label">Caution:</span> &quot;One-time&quot; means you pay once for this unlock. It is not a promise that the app, or Apple&#x27;s services, will be available forever. We may update, change or stop the app. If a future version removes the unlocked feature, we will say so in the app before the change and tell you how to ask Apple for a refund. Purchases are paid through your Apple Account and handled by Apple under Apple&#x27;s rules.</p>
