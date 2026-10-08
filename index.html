@@ -17,7 +17,7 @@
 <meta property="og:image:width" content="512">
 <meta property="og:image:height" content="512">
 <meta name="twitter:card" content="summary">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Thin Walls: Neighbor Noise", "alternateName": "Thin Walls", "description": "An iPhone app that keeps a night-by-night log of estimated noise levels: when a neighbor's or a dog's noise got loud, for how long and how often. A personal log, not a certified sound level meter.", "operatingSystem": "iOS 17.0 or later", "applicationCategory": "UtilitiesApplication", "url": "https://fututukamono.github.io/thin-walls/", "image": "https://fututukamono.github.io/thin-walls/img/icon.png", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "author": {"@type": "Person", "name": "Daisuke Kawaue"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Thin Walls: Neighbor Noise", "alternateName": "Thin Walls", "description": "An iPhone app that keeps a night-by-night log of estimated noise levels: when a neighbor's or a dog's noise got loud, for how long and how often. A personal log, not a certified sound level meter.", "operatingSystem": "iOS 17.0 or later", "applicationCategory": "UtilitiesApplication", "url": "https://fututukamono.github.io/thin-walls/", "image": "https://fututukamono.github.io/thin-walls/img/icon.png", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "author": {"@type": "Person", "name": "Daisuke Kawaue"}, "screenshot": ["https://fututukamono.github.io/thin-walls/img/screen-1.jpg", "https://fututukamono.github.io/thin-walls/img/screen-2.jpg", "https://fututukamono.github.io/thin-walls/img/screen-3.jpg", "https://fututukamono.github.io/thin-walls/img/screen-4.jpg", "https://fututukamono.github.io/thin-walls/img/screen-5.jpg"]}</script>
 <!--
   Notes for editors (not shown on the page):
    - There is no App Store link or "coming soon" text on purpose. Apple App Review Guideline 2.1(a): "placeholder text, empty websites, and other temporary content should be scrubbed before submission". Add a real App Store button only after the app has a live App Store URL.
@@ -26,30 +26,9 @@
 -->
 <style>
 :root {
-  --bg: #ffffff;
-  --fg: #1c1c1e;
-  --muted: #55555a;
-  --rule: #d9d9de;
-  --card: #f5f5f7;
-  --accent: #b83a0c;
-  --accent-fg: #ffffff;
-  --note-bg: #fff4ec;
-  --note-rule: #b83a0c;
-  --link: #9a3009;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #17171a;
-    --fg: #f2f2f7;
-    --muted: #b4b4bb;
-    --rule: #3a3a40;
-    --card: #232328;
-    --accent: #ff8a5c;
-    --accent-fg: #1a0c05;
-    --note-bg: #2b1c14;
-    --note-rule: #ff8a5c;
-    --link: #ffa682;
-  }
+  color-scheme: light;
+  --bg: #ffffff; --fg: #17202e; --muted: #566074; --rule: #dfe5ee; --card: #f3f6fb;
+  --accent: #2c5fb3; --accent-fg: #ffffff; --note-bg: #eef3fb; --note-rule: #5b7fb8; --link: #1f4f9e;
 }
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
@@ -123,17 +102,68 @@ footer p { margin: .5rem 0; }
   .hero h1 { font-size: 2.8rem; }
   .price-grid { grid-template-columns: 1fr 1fr 1fr; }
 }
+
+header.hero { background: linear-gradient(180deg, #182038 0%, #27386a 100%); color: #ffffff; padding: 1.8rem 0 2.2rem; }
+.hero .eyebrow { color: #c9d5f0; }
+.hero .sub { color: #dbe4f7; }
+.hero .lead { color: #ffffff; }
+.hero .btn-note { color: #dbe4f7; }
+.hero .btn-note a { color: #ffffff; }
+.hero .read-first { background: #ffffff; color: var(--fg); border-left-color: #5b7fb8; }
+.hero .read-first a { color: var(--link); }
+.hero-top { display: flex; align-items: center; gap: .9rem; }
+.hero-top img { width: 64px; height: 64px; border-radius: 15px; box-shadow: 0 2px 10px rgba(0,0,0,.35); }
+.chips { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0 .4rem; padding: 0; list-style: none; }
+.chips li { background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.3); border-radius: 999px; padding: .35rem .85rem; font-size: .95rem; color: #ffffff; }
+.soon { display: inline-block; background: #ffffff; color: #182038; font-weight: 700; border-radius: 12px; padding: .7rem 1.2rem; margin: .8rem 0 .2rem; }
+.qr-card { display: flex; gap: 1.1rem; align-items: center; background: var(--card); border-radius: 14px; padding: 1rem 1.1rem; }
+.qr-card img { width: 132px; height: 132px; flex: 0 0 auto; border-radius: 8px; background: #fff; }
+.qr-card h2 { font-size: 1.25rem; margin-bottom: .3rem; }
+@media (max-width: 520px) { .qr-card { flex-direction: column; align-items: flex-start; } }
+.safe { background: var(--card); border-radius: 14px; padding: 1rem 1.1rem; }
+.safe ul { margin: .4rem 0 0; padding-left: 1.2rem; }
+.safe li { margin: .5rem 0; }
+
+nav.site { border-bottom: 1px solid var(--rule); }
+nav.site .wrap { display: flex; flex-wrap: wrap; gap: .25rem 1.1rem; align-items: center; padding-top: .7rem; padding-bottom: .7rem; }
+nav.site a.brand { font-weight: 700; color: var(--fg); text-decoration: none; margin-right: auto; display: flex; align-items: center; gap: .5rem; }
+nav.site a.brand img { width: 28px; height: 28px; border-radius: 7px; }
+nav.site a { padding: .35rem 0; }
+.screens { display: flex; gap: 14px; overflow-x: auto; padding: .5rem 2px 1rem; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+.screens figure { margin: 0; flex: 0 0 auto; width: 200px; scroll-snap-align: start; }
+.screens img { width: 100%; height: auto; display: block; border-radius: 18px; border: 1px solid var(--rule); }
+.screens figcaption { font-size: .9rem; color: var(--muted); margin-top: .4rem; }
+.toc { background: var(--card); border-radius: 12px; padding: .8rem 1rem; margin: 1rem 0; }
+.toc ul { margin: .3rem 0 0; padding-left: 1.1rem; columns: 2; column-gap: 1.5rem; }
+.toc li { margin: .2rem 0; break-inside: avoid; }
+@media (max-width: 520px) { .toc ul { columns: 1; } }
+details.q { border-top: 1px solid var(--rule); padding: .2rem 0; }
+.faq-group { margin-top: 2rem; }
+dl.faq dd p { margin: .4rem 0; }
+.crumb { font-size: .95rem; color: var(--muted); margin: 1.2rem 0 0; }
 </style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Thin Walls: Neighbor Noise", "url": "https://fututukamono.github.io/thin-walls/", "inLanguage": "en-US"}</script>
 </head>
 <body>
+<nav class="site" aria-label="Site">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="img/icon.png" alt="" width="28" height="28">Thin Walls</a>
+    <a href="index.html">Home</a>
+    <a href="help.html">Help</a>
+    <a href="faq.html">FAQ</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </div>
+</nav>
 
 <header class="hero">
   <div class="wrap">
-    <p class="eyebrow">For iPhone</p>
-    <h1>Thin Walls: Neighbor Noise</h1>
+    <div class="hero-top"><img src="img/icon.png" alt="Thin Walls app icon" width="64" height="64"><div><p class="eyebrow" style="margin:0">For iPhone</p><h1>Thin Walls: Neighbor Noise</h1></div></div>
     <p class="sub">Overnight Noise Tracker</p>
     <p class="lead">Footsteps at 2 AM? A dog barking all night? Start a log before bed. In the morning, see when it got loud and for how long, as estimates from your iPhone microphone.</p>
-    <p class="btn-note">iPhone only.</p>
+    <ul class="chips" aria-label="At a glance"><li>No audio is saved</li><li>No account</li><li>Stays on your iPhone</li><li>Free to start</li></ul>
+    <p class="soon">Coming soon to the App Store</p>
+    <p class="btn-note">iPhone only. New here? See <a href="help.html">how to use it</a> or the <a href="faq.html">questions and answers</a>.</p>
 
     <div class="read-first" role="note">
       <p><span class="label">Read this first.</span> Thin Walls is a personal noise log, not a certified sound level meter. Its levels are estimates and can be wrong. It is not legal advice, and no police department, city office, landlord, property manager, HOA or court has promised to accept anything it makes. See <a href="#not">What this app is not</a>, just below.</p>
@@ -143,6 +173,39 @@ footer p { margin: .5rem 0; }
 
 <main>
 <div class="wrap">
+
+  <section aria-labelledby="screens-h">
+    <h2 id="screens-h">See how it looks</h2>
+    <div class="screens"><figure><img src="img/screen-1.jpg" alt="Thin Walls logging screen showing elapsed time, minutes over the threshold and the current level in dB above quiet" width="480" height="1040" loading="eager"><figcaption>Logging a night: elapsed time, time over the threshold, and the level right now as dB above quiet</figcaption></figure><figure><img src="img/screen-2.jpg" alt="Thin Walls night screen with minutes over the threshold, events, the loudest moment, time not recorded and a chart by minute" width="480" height="1040" loading="lazy"><figcaption>One night: minutes over the threshold, events, the loudest moment, time not recorded, and a chart by minute</figcaption></figure><figure><img src="img/screen-3.jpg" alt="Thin Walls Nights list with the latest fingerprint and a Make report button" width="480" height="1040" loading="lazy"><figcaption>The Nights list with the latest file fingerprint and the Make report button</figcaption></figure><figure><img src="img/screen-4.jpg" alt="Thin Walls event note screen with note types such as footsteps, dog barking, traffic and my own sound" width="480" height="1040" loading="lazy"><figcaption>Adding a note to an event: footsteps, music, voices, dog barking, traffic, construction and more</figcaption></figure><figure><img src="img/screen-5.jpg" alt="Thin Walls report screen with report type, period, optional recipient and Create PDF" width="480" height="1040" loading="lazy"><figcaption>The report screen: report type, dates, an optional recipient, and Create PDF or ZIP</figcaption></figure></div>
+    <p class="small">Screens show sample data.</p>
+  </section>
+
+  <section aria-labelledby="qr-h">
+    <div class="qr-card">
+      <img src="img/qr-thin-walls.png" alt="QR code that opens the Thin Walls page" width="132" height="132">
+      <div>
+        <h2 id="qr-h">Open this page on your iPhone</h2>
+        <p>Scan the code with your iPhone camera to open this page, or share the link: <a href="https://fututukamono.github.io/thin-walls/">fututukamono.github.io/thin-walls</a>.</p>
+        <p><strong>Get the app: coming soon to the App Store.</strong> The App Store address will be apps.apple.com/us/app/id6820058269. The page opens when the app is released.</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="safe-h">
+    <div class="safe">
+      <h2 id="safe-h">Your privacy and safety</h2>
+      <ul>
+        <li><strong>No audio is saved.</strong> The app keeps the sound in memory for under a second to work out a level, then discards it.</li>
+        <li><strong>No account, and nothing is sent to us.</strong> Your levels, times, notes and reports stay on your iPhone until you share them.</li>
+        <li><strong>You choose what to share.</strong> A report is a file you make and send yourself.</li>
+        <li><strong>You can delete everything.</strong> In Settings, Delete all nights removes every saved night from the iPhone.</li>
+        <li><strong>Other people's privacy.</strong> Write about the sound, not the person. Do not write names or unit numbers.</li>
+        <li><strong>Safe use.</strong> Keep the iPhone charging with its normal charger, off pillows and blankets.</li>
+        <li><strong>Adults only.</strong> Thin Walls is for people 18 and older.</li>
+      </ul>
+      <p>Read the <a href="privacy.html">Privacy Policy</a> and the <a href="faq.html#privacy-and-your-data">privacy questions and answers</a>.</p>
+    </div>
+  </section>
 
   <section id="not" aria-labelledby="not-h">
     <div class="not-box">
@@ -168,6 +231,12 @@ footer p { margin: .5rem 0; }
       <h3>Logs the night, even with the screen locked</h3>
       <p>Tap Start before bed. The app estimates the sound level every second and keeps going while the screen is locked.</p>
       <p class="caution"><span class="label">Caution:</span> Logging can stop, for example after a phone call, when another app takes the microphone, or when the battery runs out. Time that was not recorded is shown as not recorded. It is never filled in. Keep the iPhone plugged in.</p>
+    </div>
+
+    <div class="card">
+      <h3>Reminds you where to put the iPhone</h3>
+      <p>Before you start, the app reminds you to place the iPhone a few feet from the wall, ceiling or window the noise comes through, and not at your bedside.</p>
+      <p class="caution"><span class="label">Caution:</span> Where you put the iPhone changes the result. Put it only where you are allowed to leave a device.</p>
     </div>
 
     <div class="card">
@@ -197,6 +266,7 @@ footer p { margin: .5rem 0; }
       <li><strong>Landlord / HOA:</strong> dates, times and lengths of louder periods, as an attachment for a landlord or HOA.</li>
       <li><strong>Night Summary:</strong> one page with when the iPhone was logging each night (up to six nights), how many times the level went over your threshold, and a chart by minute.</li>
     </ul>
+    <p>You can type a recipient on the report screen, for example a property manager, an HOA board or a city office. It is optional. It is printed after &quot;To:&quot; at the top of the PDF, and you can leave it empty to write it by hand.</p>
     <p>You can also export a ZIP (the PDF, the per-second values as CSV, the times the app was not logging, and a README), a chart of one night as an image, and the data files of any night.</p>
     <div class="caution">
       <p><span class="label">Caution about reports:</span> A report is made by you, on your own iPhone. No police department, 311 service, city office, court, landlord, property manager or HOA made, checked or approved it, and none has promised to accept it. It may not be accepted as evidence. It does not say what made a sound, who made it, or whether any law, lease or rule was broken. Page 1 of every PDF carries a box with these limits.</p>
@@ -258,6 +328,18 @@ footer p { margin: .5rem 0; }
     <p>The exact wording is in sections 7 and 8 of the <a href="terms.html">Terms of Use</a>, which you accept in the app before you start.</p>
   </section>
 
+  <section aria-labelledby="situations-h">
+    <h2 id="situations-h">When people use Thin Walls</h2>
+    <ul>
+      <li><strong>Footsteps or music from the unit above or next door.</strong> <a href="faq.html#getting-started">Where to put the iPhone</a> and <a href="help.html#notes">how to note what you heard</a>.</li>
+      <li><strong>A dog that barks at night.</strong> <a href="faq.html#using-it-overnight">Note it as dog barking</a>.</li>
+      <li><strong>Your own snoring or the TV in the log.</strong> <a href="help.html#own-sound">Mark it as your own sound</a>.</li>
+      <li><strong>A call or Siri during the night.</strong> <a href="help.html#if-logging-stops">What happens when logging stops</a>.</li>
+      <li><strong>Sending a report to a property manager, an HOA board or a city office.</strong> <a href="help.html#make-a-report">Make a report</a>.</li>
+      <li><strong>A new iPhone, or deleting everything.</strong> <a href="help.html#purchase">Restore Purchases</a> and <a href="help.html#delete">Delete all nights</a>.</li>
+    </ul>
+  </section>
+
   <section aria-labelledby="faq-h">
     <h2 id="faq-h">Questions people ask</h2>
     <dl class="faq">
@@ -270,6 +352,7 @@ footer p { margin: .5rem 0; }
       <dt>Do you get my data?</dt>
       <dd>We never receive your levels, times, notes or reports. They stay in the app on your iPhone until you share them.</dd>
     </dl>
+    <p>More answers are on the <a href="faq.html">questions and answers page</a> and the <a href="help.html">Help page</a>.</p>
   </section>
 
   <section class="closing" aria-label="Summary of limits">
@@ -284,6 +367,8 @@ footer p { margin: .5rem 0; }
 <footer>
   <div class="wrap">
     <ul>
+      <li><a href="help.html">Help: how to use Thin Walls</a></li>
+      <li><a href="faq.html">Questions and answers</a></li>
       <li><a href="terms.html">Terms of Use</a></li>
       <li><a href="privacy.html">Privacy Policy</a></li>
       <li>Contact: <a href="mailto:contact@da-win.net">contact@da-win.net</a></li>
