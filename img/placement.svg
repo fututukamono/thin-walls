@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 260" role="img" aria-label="Side view of a bedroom: the iPhone sits on a shelf a few feet from the wall the noise comes through, not on the bed">
+<rect width="640" height="260" rx="16" fill="#eef3fb"/>
+<rect x="0" y="214" width="640" height="46" fill="#d5deef"/>
+<defs><pattern id="b2" width="40" height="20" patternUnits="userSpaceOnUse"><rect width="40" height="20" fill="#c45e47"/><rect x="2" y="2" width="17" height="7" rx="1" fill="#d97a62"/><rect x="22" y="2" width="16" height="7" rx="1" fill="#cf6a52"/><rect x="12" y="12" width="17" height="6" rx="1" fill="#d97a62"/></pattern></defs>
+<rect x="18" y="26" width="46" height="188" fill="url(#b2)" stroke="#8a3a29" stroke-width="2"/>
+<g fill="none" stroke="#2c5fb3" stroke-width="4" stroke-linecap="round"><path d="M84 96a26 26 0 0 1 0 40"/><path d="M98 84a44 44 0 0 1 0 64" opacity=".7"/><path d="M112 72a62 62 0 0 1 0 88" opacity=".45"/></g>
+<line x1="70" y1="196" x2="276" y2="196" stroke="#2c5fb3" stroke-width="3" stroke-dasharray="7 7"/>
+<polygon points="276,196 266,190 266,202" fill="#2c5fb3"/>
+<text x="112" y="186" font-family="-apple-system,Helvetica,Arial,sans-serif" font-size="17" font-weight="700" fill="#17202e">a few feet</text>
+<rect x="266" y="150" width="86" height="10" rx="3" fill="#8794b4"/><rect x="274" y="160" width="8" height="54" fill="#8794b4"/><rect x="336" y="160" width="8" height="54" fill="#8794b4"/>
+<g><rect x="291" y="96" width="36" height="54" rx="7" fill="#17202e"/><rect x="296" y="103" width="26" height="38" rx="3" fill="#2c5fb3"/><path d="M298 134l4-9 4 6 4-13 4 12 3-5" fill="none" stroke="#ffd978" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g><rect x="430" y="168" width="170" height="30" rx="6" fill="#8794b4"/><rect x="430" y="196" width="170" height="18" fill="#6f7ca0"/><rect x="430" y="146" width="40" height="26" rx="10" fill="#f6f8fc" stroke="#8794b4" stroke-width="2"/></g>
+<g><rect x="438" y="132" width="20" height="14" rx="4" fill="#17202e" opacity=".55"/><circle cx="448" cy="125" r="17" fill="none" stroke="#c2392f" stroke-width="4"/><line x1="436" y1="137" x2="460" y2="113" stroke="#c2392f" stroke-width="4"/></g>
+<text x="480" y="130" font-family="-apple-system,Helvetica,Arial,sans-serif" font-size="15" fill="#17202e">not at your bedside</text>
+</svg>
